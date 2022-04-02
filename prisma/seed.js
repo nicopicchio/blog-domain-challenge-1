@@ -105,6 +105,54 @@ async function seed() {
 		},
 	});
 
+	const createdComment1 = await prisma.comment.create({
+		data: {
+			content: 'Hey Mike, great blog post!',
+			user: {
+				connect: {
+					id: createdUser1.id,
+				},
+			},
+			post: {
+				connect: {
+					id: createdPost2.id,
+				},
+			},
+		},
+	});
+
+	const createdComment2 = await prisma.comment.create({
+		data: {
+			content: 'Yeah boiiiiiiiiiiiii!!!',
+			user: {
+				connect: {
+					id: createdUser4.id,
+				},
+			},
+			post: {
+				connect: {
+					id: createdPost1.id,
+				},
+			},
+		},
+	});
+
+	const createdComment3 = await prisma.comment.create({
+		data: {
+			content: 'Ben, you savage!!!',
+			user: {
+				connect: {
+					id: createdUser3.id,
+				},
+			},
+			post: {
+				connect: {
+					id: createdPost3.id,
+				},
+			},
+		},
+	});
+
 	process.exit(0);
 }
 
