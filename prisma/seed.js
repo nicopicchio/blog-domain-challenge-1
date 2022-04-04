@@ -153,6 +153,48 @@ async function seed() {
 		},
 	});
 
+	const replyToComment1 = await prisma.comment.create({
+		data: {
+			content: 'Thank you!',
+			user: {
+				connect: {
+					id: createdUser2.id,
+				},
+			},
+			comment: {
+				connect: {
+					id: createdComment1.id,
+				},
+			},
+			post: {
+				connect: {
+					id: createdPost2.id,
+				},
+			},
+		},
+	});
+
+	const replyToComment2 = await prisma.comment.create({
+		data: {
+			content: 'I am just being honest',
+			user: {
+				connect: {
+					id: createdUser4.id,
+				},
+			},
+			comment: {
+				connect: {
+					id: createdComment3.id,
+				},
+			},
+			post: {
+				connect: {
+					id: createdPost3.id,
+				},
+			},
+		},
+	});
+
 	process.exit(0);
 }
 
